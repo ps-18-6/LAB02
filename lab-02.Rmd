@@ -39,22 +39,28 @@ data4 <- read_excel("data/UN_country_region.xlsx")
 ```{r join-data, message = FALSE}
 # Member 1 (pair 1) write code to create object 'plastic_data_all':
 
-
+plastic_data_all <- data1
 
 
 # Member 2 (pair 2) write code to join your data to 'plastic_data_all':
 
-
+plastic_data_all <- data2 %>%
+  select(-name) %>%
+  left_join(plastic_data_all, by = "code")
 
 
 # Member 1 (pair 1) write code to join your data to 'plastic_data_all':
 
-
+plastic_data_all <- data3 %>%
+  select(-name) %>%
+  right_join(plastic_data_all, by = "code")
 
 
 # Member 2 (pair 2) write code to join your data to 'plastic_data_all':
 
-
+plastic_data_all <- data4 %>%
+  select(-name) %>%
+  right_join(plastic_data_all, by = "code")
 
 ```
 

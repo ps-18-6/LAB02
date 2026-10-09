@@ -381,20 +381,28 @@ data3 &lt;- read_tsv(&quot;data/UN_country_population.tsv&quot;)
 data4 &lt;- read_excel(&quot;data/UN_country_region.xlsx&quot;)</code></pre>
 <pre class="r"><code># Member 1 (pair 1) write code to create object &#39;plastic_data_all&#39;:
 
-
+plastic_data_all &lt;- data1
 
 
 # Member 2 (pair 2) write code to join your data to &#39;plastic_data_all&#39;:
 
-
+plastic_data_all &lt;- data2 %&gt;%
+  select(-name) %&gt;%
+  left_join(plastic_data_all, by = &quot;code&quot;)
 
 
 # Member 1 (pair 1) write code to join your data to &#39;plastic_data_all&#39;:
 
+plastic_data_all &lt;- data3 %&gt;%
+  select(-name) %&gt;%
+  right_join(plastic_data_all, by = &quot;code&quot;)
 
 
+# Member 2 (pair 2) write code to join your data to &#39;plastic_data_all&#39;:
 
-# Member 2 (pair 2) write code to join your data to &#39;plastic_data_all&#39;:</code></pre>
+plastic_data_all &lt;- data4 %&gt;%
+  select(-name) %&gt;%
+  right_join(plastic_data_all, by = &quot;code&quot;)</code></pre>
 <pre class="r"><code># Member 2 (pair 1) adds code here to view the first 10 rows of &#39;plastic_data_all&#39;</code></pre>
 </div>
 <div id="exercises" class="section level2">
