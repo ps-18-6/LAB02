@@ -108,6 +108,10 @@ min(plastic_data_all$total_mismanage_plastic)
 
 ```{r Ex3, message = FALSE}
 # Write your code here to answer exercise 3
+plastic_data_all %>% 
+  filter(code != "SOM") %>% mutate(pct_mismanaged_plastic_ocean = (mismanaged_plastic_ocean/mismanaged_plastic)*100) %>%
+  group_by(region)%>% summarise(
+median_pct = median(pct_mismanaged_plastic_ocean))
 
 
 
@@ -118,7 +122,13 @@ min(plastic_data_all$total_mismanage_plastic)
 
 ```{r Ex4, message = FALSE}
 # Write your code here to answer exercise 4
+plastic_data_all <- plastic_data_all %>%
+  rename(pop = population,
+         mis_ocean= mismanaged_plastic_ocean,
+         mis_all=mismanaged_plastic) 
 
+plastic_data_all <- plastic_data_all%>% mutate(region= str_replace_all(region, "Latin America and The Caribbean", "LAC"))
 
+plastic_data_all
 
 ```
