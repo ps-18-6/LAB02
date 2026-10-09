@@ -81,6 +81,9 @@ plastic_data_all %>% head(n = 10)
 ```{r Ex1, message = FALSE}
 # Write your code here to answer exercise 1
 
+x <- plastic_data_all %>% count(region) 
+x
+max(x$n)
 
 
 ```
@@ -92,7 +95,11 @@ plastic_data_all %>% head(n = 10)
 ```{r Ex2, message = FALSE}
 # Write your code here to answer exercise 2
 
-
+plastic_data_all <- plastic_data_all %>% mutate(total_mismanage_plastic = mismanaged_plastic * population)
+plastic_data_all
+plastic_data_all %>% group_by(region) %>% summarise(mean_value = mean(total_mismanage_plastic))
+max(plastic_data_all$total_mismanage_plastic)
+min(plastic_data_all$total_mismanage_plastic)
 
 ```
 
